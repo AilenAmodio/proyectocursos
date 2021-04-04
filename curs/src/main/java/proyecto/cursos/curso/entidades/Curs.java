@@ -38,8 +38,6 @@ public class Curs implements Serializable{
 	@ManyToOne
 	private Docente docente;
 	
-	@OneToMany
-	private List<Curs> cursos= new ArrayList<>();
-	
+
 	
 }

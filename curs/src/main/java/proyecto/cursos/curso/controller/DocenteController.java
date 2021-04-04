@@ -18,8 +18,8 @@ public class DocenteController {
 	@Autowired
 	DocenteRepository repo;
 	
-	@GetMapping("guardar")
-	public String saveDocente(@PathParam (value= "username") String username, @PathParam(value = "password") String password) {
+	@GetMapping("/ingreso")
+	public String accesoDocente(@PathParam (value= "username") String username, @PathParam(value = "password") String password) {
 		Docente docente = new Docente();
 		docente.setUsername(username);
 		docente.setPassword(password);
