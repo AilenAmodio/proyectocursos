@@ -1,5 +1,8 @@
 package proyecto.cursos.curso.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.fasterxml.jackson.annotation.JacksonInject.Value;
 
 import proyecto.cursos.curso.entidades.Alumno;
+import proyecto.cursos.curso.entidades.Curs;
 import proyecto.cursos.curso.repo.AlumnoRepository;
 
 @Controller
@@ -22,11 +26,14 @@ public class AlumnoController {
 	
 	@GetMapping("guardar")
 	public String saveAlumno(@PathParam (value  = "name" )String name, @PathParam (value = "surname") String surmane){
+		List<Curs> cursos= new ArrayList<>();
 		Alumno alumno = new Alumno();
-		alumno.setNombre(name);
-		alumno.setApellido(surmane);
-		repo.save(new Alumno());
-		return "Home";
+	
+			alumno.setNombre(name);
+			alumno.setApellido(surmane);
+			repo.save(new Alumno());
+		
+			return "Home";
 	}
 	
 	@GetMapping("/formulario")
@@ -37,6 +44,8 @@ public class AlumnoController {
 	public void okAlumno() {
 		repo.findAll();
 	}*/
+	
+	
 	
 	@Bean
 	public CommandLineRunner loadData (AlumnoRepository repo ) {
