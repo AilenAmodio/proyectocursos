@@ -1,0 +1,39 @@
+package proyecto.cursos.curso.entidades;
+
+import java.io.Serializable;
+
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+@Table (name = "PERSONA")
+@DiscriminatorColumn (name = "PERSONA")
+public class Persona implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	protected String nombre;
+	protected String apellido;
+	protected int dni;
+
+	public Persona (String nombre, String apellido) {
+		this.nombre=nombre;
+		this.apellido=apellido;
+		this.dni=dni;
+	}
+	public Persona() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
