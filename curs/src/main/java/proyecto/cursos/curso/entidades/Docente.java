@@ -26,11 +26,12 @@ private static final long serialVersionUID = 1L;
 	@OneToMany
 	private List <Curs> cursos = new ArrayList<>();
 	
-	public Docente(String nombre, String apellido) {
-		super(nombre, apellido);
-	}
 	public Docente() {
 		
 	}
-}
+
+	public Docente(String nombre, String apellido, Long dni) {
+		super(nombre, apellido, dni);
+	}
+}	
 	

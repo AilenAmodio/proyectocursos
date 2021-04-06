@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
+
 @Setter
 @Entity
 @Table (name = "PERSONA")
@@ -22,12 +22,12 @@ public class Persona implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	protected String nombre;
-	protected String apellido;
-	protected int dni;
+	protected int id;
+	public String nombre;
+	public String apellido;
+	public Long dni;
 
-	public Persona (String nombre, String apellido) {
+	public Persona (String nombre, String apellido,Long dni) {
 		this.nombre=nombre;
 		this.apellido=apellido;
 		this.dni=dni;
@@ -35,5 +35,4 @@ public class Persona implements Serializable {
 	public Persona() {
 		// TODO Auto-generated constructor stub
 	}
-
 }

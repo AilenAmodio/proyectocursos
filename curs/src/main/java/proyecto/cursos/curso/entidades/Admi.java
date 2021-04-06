@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Admi extends Persona implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	public Admi(String nombre, String apellido) {
-		super(nombre, apellido);
+	public Admi(String nombre, String apellido, Long dni) {
+		super(nombre, apellido, dni);
 	}
 }
