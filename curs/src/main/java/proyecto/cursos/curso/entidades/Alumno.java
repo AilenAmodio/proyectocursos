@@ -15,8 +15,8 @@ public class Alumno extends Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private int id;
-	public boolean vacante = true;
+	private Long id;
+	public Boolean vacante = true;
 
 	
 	public Alumno() {
@@ -32,10 +32,10 @@ public class Alumno extends Persona implements Serializable {
 	@OneToMany
 	private List<Curs> cursos= new ArrayList<>();//listado de alumnos
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public boolean isVacante() {

@@ -2,9 +2,9 @@ package proyecto.cursos.curso.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import proyecto.cursos.curso.database.SingletonDatabase;
 import proyecto.cursos.curso.entidades.Alumno;
 import proyecto.cursos.curso.entidades.Curs;
 import proyecto.cursos.curso.repo.AlumnoRepository;
@@ -25,9 +23,9 @@ import proyecto.cursos.curso.repo.AlumnoRepository;
 @Controller
 @RequestMapping ("/")
 public class AlumnoController {
-
+	
 	@Autowired
-	SingletonDatabase singletonDatabase;
+	AlumnoRepository repo;
 
 	@GetMapping("/")
 	public String getIndex() {
@@ -44,17 +42,17 @@ public class AlumnoController {
 
 	@RequestMapping("/listado") 
 	public String list (Model model) {
-		model.addAttribute("alumnos", singletonDatabase.findAll());
+		model.addAttribute("alumnos", repo.findAll());
 		return "listado";
 	}
 
 	@RequestMapping(value = "/save", method = { RequestMethod.POST, RequestMethod.PUT })
 	public String save(@RequestParam(value = "nombre") String nombre, @RequestParam(value = "apellido") String apellido,
-			@RequestParam(value = "dni") long dni,
-			Model model) throws ParseException {
+		@RequestParam(value = "dni") long dni,
+		Model model) throws ParseException {
 		Alumno alumno = new Alumno(apellido, nombre, dni);
-		alumno.setId(singletonDatabase.count());
-		singletonDatabase.save(alumno);
+	
+		repo.save(alumno);
 		model.addAttribute("alumno", alumno);
 		return "redirect:/listado";
 	}

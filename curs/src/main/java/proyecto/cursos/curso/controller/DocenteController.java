@@ -12,27 +12,32 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import proyecto.cursos.curso.database.SingletonDatabase;
+import proyecto.cursos.curso.entidades.Alumno;
 import proyecto.cursos.curso.entidades.Curs;
 import proyecto.cursos.curso.entidades.Docente;
 import proyecto.cursos.curso.repo.DocenteRepository;
 
 @Controller
-@RequestMapping ("/api")
+@RequestMapping ("/")
 public class DocenteController {
 	
 	@Autowired
-	SingletonDatabase singletonDatabase;
+	DocenteRepository repo;
 	
-	@RequestMapping(value = "/ingreso", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String save(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password,
+	/*@GetMapping("/")
+	public String index	() {
+		return "index";
+	}*/
+
+	
+	@RequestMapping(value = "/guardar", method = { RequestMethod.POST, RequestMethod.PUT })
+	public String save (@RequestParam(value = "username") String username, @RequestParam(value = "password") String password,
 			Model model) throws ParseException {
 		Docente docente = new Docente();
-		docente.setId(singletonDatabase.count());
-		singletonDatabase.guardar(docente);
+		docente.setId(repo.count());
+		repo.save(docente);
 		model.addAttribute("docente", docente);
-		return "listado";
+		return "redirect:/index";
 	}
 	
 	

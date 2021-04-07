@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import proyecto.cursos.curso.database.SingletonDatabase;
 import proyecto.cursos.curso.entidades.Alumno;
 import proyecto.cursos.curso.entidades.Curs;
 import proyecto.cursos.curso.repo.CursRepository;
@@ -22,7 +20,7 @@ import proyecto.cursos.curso.repo.CursRepository;
 public class CursController {
 	
 	@Autowired
-	SingletonDatabase singletonDatabase;
+	CursRepository repo;
 	
 	@GetMapping("/index")
 	public String back () {
