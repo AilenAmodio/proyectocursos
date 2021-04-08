@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import proyecto.cursos.curso.entidades.Persona;
 
 @Entity
 @DiscriminatorValue(value= "ALUMNO") 
@@ -25,7 +21,6 @@ public class Alumno extends Persona implements Serializable {
 	}
 
 	public Alumno() {
-		
 	}
 
 	@OneToMany
@@ -45,7 +40,6 @@ public class Alumno extends Persona implements Serializable {
 	}
 	@Override
 	public void setDni(Long dni) {
-		// TODO Auto-generated method stub
 		super.setDni(dni);
 	}
 	
