@@ -16,12 +16,12 @@ import java.util.List;
 @Getter
 @Entity 
 @DiscriminatorValue (value= "DOCENTE")
-@Table (name = "Docentes")
+@Table (name = "DOCENTES")
 public class Docente extends Persona implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private String username;
-	private String password;
+	public String username;
+	public String password;
 
 	@OneToMany
 	private List <Curs> cursos = new ArrayList<>();
@@ -30,10 +30,17 @@ public class Docente extends Persona implements Serializable{
 		super(nombre, apellido, dni);
 	}
 
-	public Docente() {
-
+	protected Docente(Long dni, String username, String password) {
+		this.username = username;
+		this.password = password;
+		this.dni=dni;
+	//	this.cursos = cursos;
 	}
 
+	
+	public Docente () {
+		
+	}
 
 }	
 	

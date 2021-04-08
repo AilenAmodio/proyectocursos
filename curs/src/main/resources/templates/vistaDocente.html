@@ -14,21 +14,25 @@
   <header th:insert="fragments/nav.html :: header"> </header>	
    <div class="container">
 		<div th:if="${docente.isEmpty()}" class="alert alert-primary" role="alert">
-		  No hay alumnos registrados.
+		No hay docentes registrados
 		</div>
 		<span th:if="!${docente.isEmpty()}">
 			<table class="table"> 
 			  <thead>
 			    <tr>
 			      <th scope="col">#</th>
-			      <th scope="col">Nombre</th>
+			      <th scope="col">Usuario</th>
 			      <th scope="col">Curso</th>
+			      <th scope="col">DNI</th>
 			    </tr>
 			  </thead>
 			  <tbody>
 				<tr th:each="docente, iter : ${docente}">
 			      	<th scope="row" th:text="${iter.index + 1}" />
 				    <td th:text="${docente.username}" />
+				    <td th:text="${docente.password}" />
+					<td th:text="${docente.dni}" />
+
 				</tr>
 			  </tbody>
 			</table>		
