@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,10 +12,10 @@
   <body>
   <header th:insert="fragments/nav.html :: header"> </header>	
    <div class="container">
-		<div th:if="${alumnos.isEmpty()}" class="alert alert-primary" role="alert">
+		<div th:if="${alumno.isEmpty()}" class="alert alert-primary" role="alert">
 		  No hay alumnos registrados.
 		</div>
-		<span th:if="!${alumnos.isEmpty()}">
+		<span th:if="!${alumno.isEmpty()}">
 			<table class="table">
 			  <thead>
 			    <tr>
@@ -27,17 +27,14 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-				<tr th:each="alumno, iter : ${alumnos}">
+				<tr th:each="alumno, iter : ${alumno}">
 			      	<th scope="row" th:text="${iter.index + 1}" />
 				    <td th:text="${alumno.nombre}" />
 	  			    <td th:text="${alumno.apellido}" />
-				    <td th:text="${alumno.dni}" />
-				    
+				    <td th:text="${alumno.dni}" />   
 				</tr>
 			  </tbody>
-			</table>
-		</span>
-		
+			</table>		
 		</div>
 	
     <!-- Optional JavaScript; choose one of the two! -->

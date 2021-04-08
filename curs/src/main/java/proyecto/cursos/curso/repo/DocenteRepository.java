@@ -9,7 +9,11 @@ import proyecto.cursos.curso.entidades.Docente;
 @Repository
 @Transactional
 public interface DocenteRepository extends CrudRepository<Docente, Long> {
+	
 	Optional<Docente> findByNombre(String nombre);
+	
 	Optional<Docente> findByNombreAndApellido(String nombre, String apellido);
+	
+	Optional<Docente> findById (Long id);
 	
 }

@@ -22,21 +22,17 @@ import proyecto.cursos.curso.repo.DocenteRepository;
 public class DocenteController {
 	
 	@Autowired
-	DocenteRepository repo;
+	private DocenteRepository repo;
 	
-	/*@GetMapping("/")
-	public String index	() {
-		return "index";
-	}*/
-
 	
 	@RequestMapping(value = "/guardar", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String save (@RequestParam(value = "username") String username, @RequestParam(value = "password") String password,
+	public String save (@RequestParam(value = "username") String username, @RequestParam(value = "password") String password, 
+			@PathParam (value = "id") Long id,
 			Model model) throws ParseException {
-		Docente docente = new Docente();
-		docente.setId(repo.count());
-		repo.save(docente);
-		model.addAttribute("docente", docente);
+		
+		Docente docente = repo.findById(id).get();
+		docente.setUsername(username);
+		docente.setPassword(password);
 		return "redirect:/index";
 	}
 	
@@ -45,9 +41,4 @@ public class DocenteController {
 	public String accesoDocente (){
 		return "docentes";
 	}
-	
-	/*@GetMapping("/")
-	public void okDocentes() {
-		repo.findAll();
-	}*/
-	}
+}
