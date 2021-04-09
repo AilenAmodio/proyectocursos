@@ -13,7 +13,7 @@
 		<header th:insert="fragments/navbar.html :: header"> </header>	
 		<h3>Confirmación de borrado de alumno</h3>
 		<div class="container">
-			<form th:action="@{|borrar/${alumno.dni}|}" method="post" class="form-group" th:object=${Alumno}>
+			<form th:action="@{|borrar/${Alumno.dni}|}" method="post" class="form-group" th:object=${Alumno}>
 				<div class="form-group">
 					<label for="nombre">Nombre</label>
 					<input type="text" class="form-control" id="nombre" name="nombre" th:field="{nombre}"/>				
