@@ -12,26 +12,23 @@
   <body style="background-color:Lavender;">	
   <header th:insert="fragments/nav.html :: header"> </header>
 	<div class="container">
-		<form th:action="@{guardar}" method="post" class="form-group" th:object=${Docente}>
-			<div class="form-group">
-				<label for="username">Usuario</label>
-				<input type="text" class="form-control" id="username" name="username">
+		<form th:action="@{/guardar}" method="post" class="form-group" th:object=${docente}>
+				<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control" id="username" name="username" />
 			</div>
 			<div class="form-group">
 				<label for="password">Contraseña</label>
 				<input type="password" class="form-control" id="password" name="password">
 			</div>
 			<div class="form-group">
-				<label for="inputEmail">DNI</label>
+				<label for="dni">DNI</label>
 				<input type="text" class="form-control" id="dni" name="dni">
-			</div>
-			<div class="col-12">
-			</div>
-			<input type="submit" value="Enviar" onclick="hizoClick()" th:href= "@{/vistaDocente}" />
+				<input type="submit" value="Enviar" onclick="hizoClick()" th:href= "@{/vistaDocente}" />
 		</form>
 		<script>
 				function hizoClick() {
-					alert("Ingreso Correcto");
+					alert("¡Ingreso correcto!");
 				}
 			</script>
 	</div>

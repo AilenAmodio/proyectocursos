@@ -16,9 +16,9 @@ import proyecto.cursos.curso.repo.DocenteRepository;
 public class DocenteController {
 	
 	@Autowired
-	private DocenteRepository docenteRepo;
+	DocenteRepository docenteRepo;
 	
-	@RequestMapping("docentes")
+	@RequestMapping("/docentes")
 	public String formulario (Model model) {
 		model.addAttribute("docente", new Docente());
 		return "/docentes";
@@ -26,19 +26,18 @@ public class DocenteController {
 	
 	
 	@RequestMapping(value = "/guardar", method = { RequestMethod.POST, RequestMethod.PUT })
-	public String save (@RequestParam (value = "username") String username , @RequestParam(value = "password") String password, 
+	public String guardar (@RequestParam(value = "username") String username , @RequestParam(value = "password") String password, 
 			@PathParam (value = "dni") Long dni, Model model)
 		throws ParseException {
-		
-		Docente docente = new Docente(username, password, dni);
-		model.addAttribute("docente", docenteRepo.findByDni(dni));
+		Docente docente = new Docente(dni, username, password);
+		model.addAttribute("docente", docenteRepo.findByUsername(username));
 		docenteRepo.save(docente);
 		return "redirect:/vistaDocente";
 		
 	}
 	
 	@RequestMapping("/vistaDocente") 
-	public String list (Model model) {
+	public String lista (Model model) {
 		model.addAttribute("docente", docenteRepo.findAll());
 		return "vistaDocente";
 	}
