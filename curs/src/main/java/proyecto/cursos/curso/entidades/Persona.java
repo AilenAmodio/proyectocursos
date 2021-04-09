@@ -22,7 +22,7 @@ public class Persona implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Integer id;
+	protected Long id;
 	public String nombre;
 	public String apellido;
 	public Long dni;

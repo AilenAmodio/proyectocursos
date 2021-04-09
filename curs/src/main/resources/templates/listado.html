@@ -23,7 +23,7 @@
 			      <th scope="col">Nombre</th>
 			      <th scope="col">Apellido</th>
 			      <th scope="col">DNI</th>
-			      <th scope="col">Curso elegido</th>
+			      <th scope="col">Acciones</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -31,7 +31,9 @@
 			      	<th scope="row" th:text="${iter.index + 1}" />
 				    <td th:text="${alumno.nombre}" />
 	  			    <td th:text="${alumno.apellido}" />
-				    <td th:text="${alumno.dni}" />   
+				    <td th:text="${alumno.dni}" /> 
+				    <td><form th:action="@{|/editar/?dni=${alumno.dni}|}" method="post"><button type="submit" class="btn btn-warning">Editar</button></form></td>
+				    <td><form th:action="@{|/borrar/?dni=${alumno.dni}|}" method="post"><button type="submit" class="btn btn-danger">Borrar</button></form></td>  
 				</tr>
 			  </tbody>
 			</table>		

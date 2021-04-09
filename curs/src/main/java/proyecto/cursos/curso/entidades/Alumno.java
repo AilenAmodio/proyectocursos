@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -12,9 +13,10 @@ import javax.persistence.OneToMany;
 public class Alumno extends Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public Boolean vacante = true;
-
+	@Id
+	public Long id;
 		
-	public Alumno(String nombre, String apellido, long dni) {
+	public Alumno(String nombre, String apellido, Long dni) {
 		this.apellido=apellido;
 		this.nombre=nombre;
 		this.dni=dni;
@@ -41,6 +43,14 @@ public class Alumno extends Persona implements Serializable {
 	@Override
 	public void setDni(Long dni) {
 		super.setDni(dni);
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

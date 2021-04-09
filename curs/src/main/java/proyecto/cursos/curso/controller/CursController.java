@@ -23,4 +23,6 @@ public class CursController {
 		return "info";
 	}
 	
+	
+	
 }
