@@ -16,4 +16,8 @@ public class Admi extends Persona implements Serializable{
 	public Admi(String nombre, String apellido, Long dni) {
 		super(nombre, apellido, dni);
 	}
+	
+	public Admi() {
+		
+	}
 }

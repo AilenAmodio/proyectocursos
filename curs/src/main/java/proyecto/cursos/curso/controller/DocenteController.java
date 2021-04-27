@@ -18,11 +18,6 @@ public class DocenteController {
 	@Autowired
 	DocenteRepository docenteRepo;
 	
-	@RequestMapping("/docentes")
-	public String formulario (Model model) {
-		model.addAttribute("docente", new Docente());
-		return "/docentes";
-	}
 	
 	
 	@RequestMapping(value = "/guardar", method = { RequestMethod.POST, RequestMethod.PUT })
@@ -32,13 +27,24 @@ public class DocenteController {
 		Docente docente = new Docente(dni, username, password);
 		model.addAttribute("docente", docenteRepo.findByUsername(username));
 		docenteRepo.save(docente);
-		return "redirect:/vistaDocente";
+		return "/registroDocente";
 		
 	}
-	
-	@RequestMapping("/vistaDocente") 
-	public String lista (Model model) {
-		model.addAttribute("docente", docenteRepo.findAll());
-		return "vistaDocente";
+	@RequestMapping(value = "/registroDocente", method = {RequestMethod.POST, RequestMethod.PUT}) 
+	public String agregarDocente (@RequestParam (value = "nombre")String nombre, @RequestParam(value= "apellido") String apellido,
+			@PathParam (value= "dni") Long dni, @RequestParam (value= "username") String username, @RequestParam (value= "password") String password,
+			Model model){
+			Docente docente = new Docente(dni, nombre, apellido);
+			model.addAttribute("docente", docenteRepo.findByUsername(username));
+			docenteRepo.save(docente);
+			
+		return "/guardar";
 	}
+	
+	@RequestMapping("/docentes")
+	public String formulario (Model model) {
+		model.addAttribute("docente", new Docente());
+		return "/docentes";
+	}
+	
 }

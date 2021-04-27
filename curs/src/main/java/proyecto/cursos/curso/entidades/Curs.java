@@ -26,6 +26,9 @@ public class Curs implements Serializable{
 	public Curs(int horas, String nombrecurso) {
 		// TODO Auto-generated constructor stub
 	}
+	public Curs() {
+		// TODO Auto-generated constructor stub
+	}
 	private Integer hora;
 	protected String nombre;
 	protected Integer fecha; // duracion ¿meses?
