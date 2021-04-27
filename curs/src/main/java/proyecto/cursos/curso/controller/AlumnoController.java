@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import proyecto.cursos.curso.entidades.Alumno;
 import proyecto.cursos.curso.repo.AlumnoRepository;
 
 @Controller
-@RequestMapping ("/")
+@RequestMapping("/")
 public class AlumnoController {
-	
+
 	@Autowired
 	AlumnoRepository alumnoRepo;
 
